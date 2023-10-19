@@ -18,6 +18,7 @@ function App() {
 export default App;
 
 const MainWrap = styled.div`
+  width: 100%;
   margin-top: 144px;
   display: flex;
   justify-content: center;
@@ -29,4 +30,3 @@ const Container = styled.div`
   max-width: 730px;
   width: 100%;
 `;
-

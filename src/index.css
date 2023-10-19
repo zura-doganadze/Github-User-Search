@@ -3,6 +3,7 @@
 body {
   text-align: center;
   font-family: "Space Mono", monospace;
+  background: #f6f8ff;
 }
 #root {
   width: 100%;
@@ -10,11 +11,6 @@ body {
   display: flex;
 }
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.Header * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
