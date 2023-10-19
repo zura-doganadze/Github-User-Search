@@ -29,4 +29,5 @@ const Container = styled.div`
   flex-direction: column;
   max-width: 730px;
   width: 100%;
+  margin: 0 30px;
 `;

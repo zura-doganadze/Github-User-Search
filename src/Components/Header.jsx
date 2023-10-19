@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import moon from "../assets/img/moon.svg";
+
+
 const Header = () => {
   return (
     <Wrapper className="Header">
@@ -36,6 +38,7 @@ const MoudSpan = styled.span`
   font-weight: 700;
   letter-spacing: 2.5px;
   margin-right: 16px;
+  
 `;
 const Img = styled.img`
   width: 20px;
