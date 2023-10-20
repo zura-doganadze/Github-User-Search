@@ -1,6 +1,10 @@
 import React from "react";
-import user from "../assets/img/user-img.png";
 import styled from "styled-components";
+import user from "../assets/img/user-img.png";
+import location from "../assets/img/003-location.svg";
+import twitter from "../assets/img/004-twitter.svg";
+import url from "../assets/img/002-url.svg";
+import office from "../assets/img/001-office-building.svg";
 
 function Main() {
   return (
@@ -36,6 +40,24 @@ function Main() {
               <ActivityNumber>9</ActivityNumber>
             </ActivityDetailsCont>
           </ActivityWrapper>
+          <ContactWrapper>
+            <ContactContainer>
+              <img src={location} alt="location img" />
+              <ContactText>San Francisco</ContactText>
+            </ContactContainer>
+            <ContactContainer>
+              <img src={twitter} alt="location img" />
+              <ContactText>Not Available</ContactText>
+            </ContactContainer>
+            <ContactContainer>
+              <img src={url} alt="location img" />
+              <ContactText>https://github.blog</ContactText>
+            </ContactContainer>
+            <ContactContainer>
+              <img src={office} alt="location img" />
+              <ContactText>@github</ContactText>
+            </ContactContainer>
+          </ContactWrapper>
         </Description>
       </Container>
     </MainWrapper>
@@ -130,4 +152,24 @@ const ActivityNumber = styled.span`
   color: #2b3442;
   font-size: 22px;
   font-weight: 700;
+`;
+//contact
+const ContactWrapper = styled.div`
+  max-width: 480px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: start;
+  row-gap: 19px;
+  column-gap: 62px;
+`;
+const ContactContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const ContactText = styled.span`
+  color: #4b6a9b;
+  font-size: 16px;
+  margin-left: 19px;
+  cursor: pointer;
 `;
