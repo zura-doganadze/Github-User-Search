@@ -21,6 +21,22 @@ function Main() {
             <Bio>This profile has no bio</Bio>
           </NameWrapper>
         </BioContainer>
+        <Description>
+          <ActivityWrapper>
+            <ActivityDetailsCont>
+              <ActivityTitle>Repos</ActivityTitle>
+              <ActivityNumber>8</ActivityNumber>
+            </ActivityDetailsCont>
+            <ActivityDetailsCont>
+              <ActivityTitle>Followers</ActivityTitle>
+              <ActivityNumber>3938</ActivityNumber>
+            </ActivityDetailsCont>
+            <ActivityDetailsCont>
+              <ActivityTitle>Following</ActivityTitle>
+              <ActivityNumber>9</ActivityNumber>
+            </ActivityDetailsCont>
+          </ActivityWrapper>
+        </Description>
       </Container>
     </MainWrapper>
   );
@@ -37,7 +53,7 @@ const MainWrapper = styled.div`
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
 `;
 const Container = styled.div`
-  width: 90%;
+  width: 87%;
   margin: 5% 0 52px 0;
 `;
 const NameWrapper = styled.div`
@@ -83,4 +99,35 @@ const Bio = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 20px;
+`;
+// ActivityWrapper
+const Description = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+const ActivityWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: #f6f8ff;
+  max-width: 480px;
+  width: 100%;
+  padding: 15px 55px 17px 32px;
+  margin: 32px 0 37px 0;
+`;
+const ActivityDetailsCont = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+const ActivityTitle = styled.span`
+  color: #4b6a9b;
+  font-size: 14px;
+`;
+const ActivityNumber = styled.span`
+  color: #2b3442;
+  font-size: 22px;
+  font-weight: 700;
 `;
