@@ -1,43 +1,84 @@
+import { useState, useEffect } from "react";
 import React from "react";
 import styled from "styled-components";
-import user from "../assets/img/user-img.png";
+import userImg from "../assets/img/user-img.png";
 import location from "../assets/img/003-location.svg";
 import twitter from "../assets/img/004-twitter.svg";
 import url from "../assets/img/002-url.svg";
 import office from "../assets/img/001-office-building.svg";
 
-function Main() {
+function Main(props) {
+  // const [state, setState] = useState("");
+  // const [user, setUSer] = useState("");
+
+  // async function fetchAdvice() {
+  //   try {
+  //     const response = await fetch(`https://api.github.com/users/${user}`);
+
+  //     if (!response.ok) {
+  //       throw new Error("There was error while fetchig data");
+  //     }
+  //     const data = await response.json();
+
+  //     console.log(data);
+  //     console.log(data.public_repos);
+  //     console.log(user);
+  //     setState(data);
+  //   } catch (Error) {
+  //     console.log(Error);
+  //   }
+  // }
+  //  useEffect(() => {
+  //   fetchAdvice();
+  // }, []);
   return (
     <MainWrapper>
       <Container>
         <BioContainer>
           <div>
-            <Img src={user} alt="user img" />
+            <Img src={userImg} alt="user img" />
           </div>
           <NameWrapper>
             <NameContainer>
               <Names>
                 <Name>The Octocat </Name>
-                <NickName>@octocat</NickName>
+                <NickName>
+                  @{props.state !== "" ? props.state.login : "octocat"}
+                </NickName>
               </Names>
               <Join>Joined 25 Jan 2011</Join>
             </NameContainer>
             <Bio>This profile has no bio</Bio>
+            {/* <input
+              type="text"
+              value={props.user}
+              onChange={(event) => props.setUSer(event.target.value)}
+            /> */}
+            {/* <button onClick={() => props.fetchAdvice()}>
+              buttonuyfiuyfiyf
+            </button> */}
+            {/* <span> advice {state !== "" && state.public_repos}</span> */}
           </NameWrapper>
         </BioContainer>
         <Description>
           <ActivityWrapper>
             <ActivityDetailsCont>
               <ActivityTitle>Repos</ActivityTitle>
-              <ActivityNumber>8</ActivityNumber>
+              <ActivityNumber>
+                {props.state !== "" ? props.state.public_repos : 8}
+              </ActivityNumber>
             </ActivityDetailsCont>
             <ActivityDetailsCont>
               <ActivityTitle>Followers</ActivityTitle>
-              <ActivityNumber>3938</ActivityNumber>
+              <ActivityNumber>
+                {props.state !== "" ? props.state.followers : 3938}
+              </ActivityNumber>
             </ActivityDetailsCont>
             <ActivityDetailsCont>
               <ActivityTitle>Following</ActivityTitle>
-              <ActivityNumber>9</ActivityNumber>
+              <ActivityNumber>
+                {props.state !== "" ? props.state.following : 9}
+              </ActivityNumber>
             </ActivityDetailsCont>
           </ActivityWrapper>
           <ContactWrapper>

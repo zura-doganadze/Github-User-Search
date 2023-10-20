@@ -1,15 +1,21 @@
+import { useState, useEffect } from "react";
 import React from "react";
 import styled from "styled-components";
 import search from "../assets/img/search icon.svg";
 
-function Search() {
+function Search(props) {
   return (
     <Wrapper>
       <SearchContainer>
         <Img src={search} alt="search icon" />
-        <Input type="text" placeholder="Search GitHub Username…" />
+        <Input
+          type="text"
+          placeholder="Search GitHub Username…"
+          value={props.user}
+          onChange={(event) => props.setUSer(event.target.value)}
+        />
       </SearchContainer>
-      <Button>search</Button>
+      <Button onClick={() => props.fetchAdvice()}> search</Button>
     </Wrapper>
   );
 }
