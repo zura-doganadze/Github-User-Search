@@ -46,7 +46,10 @@ function Main(props) {
                   @{props.state !== "" ? props.state.login : "octocat"}
                 </NickName>
               </Names>
-              <Join>Joined 25 Jan 2011</Join>
+              <Join>
+                Joined {props.state !== "" ? props.state.created_at : 25} Jan
+                2011
+              </Join>
             </NameContainer>
             <Bio>This profile has no bio</Bio>
             {/* <input

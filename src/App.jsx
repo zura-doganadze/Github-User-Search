@@ -6,7 +6,7 @@ import Main from "./Components/Main";
 
 function App() {
   const [state, setState] = useState("");
-  const [user, setUSer] = useState("");
+  const [user, setUser] = useState("");
 
   async function fetchAdvice() {
     try {
@@ -15,10 +15,11 @@ function App() {
       if (!response.ok) {
         throw new Error("There was error while fetchig data");
       }
+   
       const data = await response.json();
       console.log(data);
-      console.log(user);
       setState(data);
+      console.log(user);
     } catch (Error) {
       console.log(Error);
     }
@@ -30,7 +31,7 @@ function App() {
     <MainWrap>
       <Container>
         <Header />
-        <Search user={user} setUSer={setUSer} fetchAdvice={fetchAdvice} />
+        <Search user={user} setUser={setUser} fetchAdvice={fetchAdvice} />
         <Main state={state} />
       </Container>
     </MainWrap>
