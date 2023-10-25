@@ -8,59 +8,104 @@ import url from "../assets/img/002-url.svg";
 import office from "../assets/img/001-office-building.svg";
 
 function Main(props) {
-  // const [state, setState] = useState("");
-  // const [user, setUSer] = useState("");
+  const [state, setState] = useState("");
+  const [user, setUSer] = useState("");
 
-  // async function fetchAdvice() {
-  //   try {
-  //     const response = await fetch(`https://api.github.com/users/${user}`);
+  async function fetchAdvice() {
+    try {
+      const response = await fetch(`https://api.github.com/users/${user}`);
 
-  //     if (!response.ok) {
-  //       throw new Error("There was error while fetchig data");
-  //     }
-  //     const data = await response.json();
+      if (!response.ok) {
+        throw new Error("There was error while fetchig data");
+      }
+      const data = await response.json();
 
-  //     console.log(data);
-  //     console.log(data.public_repos);
-  //     console.log(user);
-  //     setState(data);
-  //   } catch (Error) {
-  //     console.log(Error);
-  //   }
-  // }
+      console.log(data);
+      console.log(data.public_repos);
+      console.log(user);
+      setState(data);
+    } catch (Error) {
+      console.log(Error);
+    }
+  }
   //  useEffect(() => {
   //   fetchAdvice();
   // }, []);
+
+  const data = [
+    {
+      avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
+      bio: null,
+      blog: "https://github.blog",
+      company: "@github",
+      created_at: "2011-01-25T18:44:36Z",
+      email: null,
+      events_url: "https://api.github.com/users/octocat/events{/privacy}",
+      followers: 10840,
+      followers_url: "https://api.github.com/users/octocat/followers",
+      following: 9,
+      following_url:
+        "https://api.github.com/users/octocat/following{/other_user}",
+      gists_url: "https://api.github.com/users/octocat/gists{/gist_id}",
+      gravatar_id: "",
+      hireable: null,
+      html_url: "https://github.com/octocat",
+      id: 583231,
+      location: "San Francisco",
+      login: "octocat",
+      name: "The Octocat",
+      node_id: "MDQ6VXNlcjU4MzIzMQ==",
+      organizations_url: "https://api.github.com/users/octocat/orgs",
+      public_gists: 8,
+      public_repos: 8,
+      received_events_url:
+        "https://api.github.com/users/octocat/received_events",
+      repos_url: "https://api.github.com/users/octocat/repos",
+      site_admin: false,
+      starred_url:
+        "https://api.github.com/users/octocat/starred{/owner}{/repo}",
+      subscriptions_url: "https://api.github.com/users/octocat/subscriptions",
+      twitter_username: null,
+      type: "User",
+      updated_at: "2023-10-22T11:22:57Z",
+      url: "https://api.github.com/users/octocat",
+    },
+  ];
   return (
     <MainWrapper>
       <Container>
         <BioContainer>
           <div>
-            <Img src={userImg} alt="user img" />
+            <Img
+              src={
+                props.state !== "" ? props.state.avatar_url : data[0].avatar_url
+              }
+              alt="user img"
+            />
           </div>
           <NameWrapper>
             <NameContainer>
               <Names>
-                <Name>The Octocat </Name>
+                <Name>
+                  {props.state !== "" ? props.state.name : data[0].name}{" "}
+                </Name>
                 <NickName>
-                  @{props.state !== "" ? props.state.login : "octocat"}
+                  @{props.state !== "" ? props.state.login : data[0].login}
                 </NickName>
               </Names>
               <Join>
-                Joined {props.state !== "" ? props.state.created_at : 25} Jan
-                2011
+                Joined{" "}
+                {props.state !== ""
+                  ? props.state.created_at
+                  : data[0].created_at}{" "}
+                Jan
               </Join>
             </NameContainer>
-            <Bio>This profile has no bio</Bio>
-            {/* <input
-              type="text"
-              value={props.user}
-              onChange={(event) => props.setUSer(event.target.value)}
-            /> */}
-            {/* <button onClick={() => props.fetchAdvice()}>
-              buttonuyfiuyfiyf
-            </button> */}
-            {/* <span> advice {state !== "" && state.public_repos}</span> */}
+            <Bio>
+              {props.state !== ""
+                ? props.state.bio || "This profile has no bio"
+                : "This profile has no bio"}
+            </Bio>
           </NameWrapper>
         </BioContainer>
         <Description>
@@ -68,38 +113,72 @@ function Main(props) {
             <ActivityDetailsCont>
               <ActivityTitle>Repos</ActivityTitle>
               <ActivityNumber>
-                {props.state !== "" ? props.state.public_repos : 8}
+                {props.state !== ""
+                  ? props.state.public_repos
+                  : data[0].public_repos}
               </ActivityNumber>
             </ActivityDetailsCont>
             <ActivityDetailsCont>
               <ActivityTitle>Followers</ActivityTitle>
               <ActivityNumber>
-                {props.state !== "" ? props.state.followers : 3938}
+                {props.state !== "" ? props.state.followers : data[0].followers}
               </ActivityNumber>
             </ActivityDetailsCont>
             <ActivityDetailsCont>
               <ActivityTitle>Following</ActivityTitle>
               <ActivityNumber>
-                {props.state !== "" ? props.state.following : 9}
+                {props.state !== "" ? props.state.following : data[0].following}
               </ActivityNumber>
             </ActivityDetailsCont>
           </ActivityWrapper>
           <ContactWrapper>
             <ContactContainer>
               <img src={location} alt="location img" />
-              <ContactText>San Francisco</ContactText>
+              <ContactText>
+                {props.state !== ""
+                  ? props.state.location
+                    ? props.state.location
+                    : "Not Available"
+                  : data[0].location
+                  ? data[0].location
+                  : "Not Available"}
+              </ContactText>
             </ContactContainer>
             <ContactContainer>
               <img src={twitter} alt="location img" />
-              <ContactText>Not Available</ContactText>
+              <ContactText>
+                {props.state !== ""
+                  ? props.state.twitter_username
+                    ? props.state.twitter_username
+                    : "Not Available"
+                  : data[0].twitter_username
+                  ? data[0].twitter_username
+                  : "Not Available"}
+              </ContactText>
             </ContactContainer>
             <ContactContainer>
               <img src={url} alt="location img" />
-              <ContactText>https://github.blog</ContactText>
+              <ContactText>
+                {props.state !== ""
+                  ? props.state.blog
+                    ? props.state.blog
+                    : "Not Available"
+                  : data[0].blog
+                  ? data[0].blog
+                  : "Not Available"}
+              </ContactText>
             </ContactContainer>
             <ContactContainer>
               <img src={office} alt="location img" />
-              <ContactText>@github</ContactText>
+              <ContactText>
+                {props.state !== ""
+                  ? props.state.company
+                    ? `@ ${props.state.company}`
+                    : "Not Available"
+                  : `@ ${data[0].company}`
+                  ? data[0].company
+                  : "Not Available"}
+              </ContactText>
             </ContactContainer>
           </ContactWrapper>
         </Description>
