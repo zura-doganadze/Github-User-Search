@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import moon from "../assets/img/moon.svg";
-
-
-const Header = () => {
+import sun from "../assets/img/002-sun.svg";
+const Header = (props) => {
   return (
     <Wrapper className="Header">
       <Title>devfinder</Title>
       <MoudContainer>
+        
         <MoudSpan>DARK</MoudSpan>
-        <Img src={moon} alt="moon icon" />
+        <Button onClick={props.toggleDarkMode}>
+          <Img src={props.darkMode ? sun : moon} alt="moon icon" />
+        </Button>
       </MoudContainer>
     </Wrapper>
   );
@@ -17,6 +19,10 @@ const Header = () => {
 
 export default Header;
 
+const Button = styled.button`
+  border: none;
+  background-color: inherit;
+`;
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -38,7 +44,6 @@ const MoudSpan = styled.span`
   font-weight: 700;
   letter-spacing: 2.5px;
   margin-right: 16px;
-  
 `;
 const Img = styled.img`
   width: 20px;

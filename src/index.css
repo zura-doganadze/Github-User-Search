@@ -4,7 +4,7 @@ body {
   text-align: center;
   font-family: "Space Mono", monospace;
   background: #f6f8ff;
-}
+ }
 #root {
   width: 100%;
   min-height: 100vh;

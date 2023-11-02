@@ -10,28 +10,7 @@ import office from "../assets/img/001-office-building.svg";
 function Main(props) {
   const [state, setState] = useState("");
   const [user, setUSer] = useState("");
-
-  async function fetchAdvice() {
-    try {
-      const response = await fetch(`https://api.github.com/users/${user}`);
-
-      if (!response.ok) {
-        throw new Error("There was error while fetchig data");
-      }
-      const data = await response.json();
-
-      console.log(data);
-      console.log(data.public_repos);
-      console.log(user);
-      setState(data);
-    } catch (Error) {
-      console.log(Error);
-    }
-  }
-  //  useEffect(() => {
-  //   fetchAdvice();
-  // }, []);
-
+ 
   const data = [
     {
       avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
@@ -108,6 +87,7 @@ function Main(props) {
             </Bio>
           </NameWrapper>
         </BioContainer>
+
         <Description>
           <ActivityWrapper>
             <ActivityDetailsCont>

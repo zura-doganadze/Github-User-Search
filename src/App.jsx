@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Header from "../src/Components/Header";
 import Search from "./Components/Search";
 import Main from "./Components/Main";
@@ -7,7 +7,11 @@ import Main from "./Components/Main";
 function App() {
   const [state, setState] = useState("");
   const [user, setUser] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   async function fetchAdvice() {
     try {
       const response = await fetch(`https://api.github.com/users/${user}`);
@@ -15,7 +19,7 @@ function App() {
       if (!response.ok) {
         throw new Error("There was error while fetchig data");
       }
-   
+
       const data = await response.json();
       console.log(data);
       setState(data);
@@ -24,13 +28,11 @@ function App() {
       console.log(Error);
     }
   }
-  // useEffect(() => {
-  //   fetchAdvice();
-  // }, []);
+
   return (
     <MainWrap>
       <Container>
-        <Header />
+        <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         <Search user={user} setUser={setUser} fetchAdvice={fetchAdvice} />
         <Main state={state} />
       </Container>
@@ -39,6 +41,8 @@ function App() {
 }
 
 export default App;
+
+
 
 const MainWrap = styled.div`
   width: 100%;
