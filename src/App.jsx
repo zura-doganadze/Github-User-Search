@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "../src/Components/Header";
 import Search from "./Components/Search";
@@ -7,11 +7,16 @@ import Main from "./Components/Main";
 function App() {
   const [state, setState] = useState("");
   const [user, setUser] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setIsDarkMode(!isDarkMode);
   };
+
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", isDarkMode);
+  }, [isDarkMode]);
+
   async function fetchAdvice() {
     try {
       const response = await fetch(`https://api.github.com/users/${user}`);
@@ -30,19 +35,22 @@ function App() {
   }
 
   return (
-    <MainWrap>
+    <MainWrap className={isDarkMode ? "dark-mode" : ""}>
       <Container>
-        <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-        <Search user={user} setUser={setUser} fetchAdvice={fetchAdvice} />
-        <Main state={state} />
+        <Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+        <Search
+          user={user}
+          setUser={setUser}
+          fetchAdvice={fetchAdvice}
+          isDarkMode={isDarkMode}
+        />
+        <Main state={state} isDarkMode={isDarkMode} />
       </Container>
     </MainWrap>
   );
 }
 
 export default App;
-
-
 
 const MainWrap = styled.div`
   width: 100%;

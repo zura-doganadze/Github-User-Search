@@ -4,13 +4,13 @@ import moon from "../assets/img/moon.svg";
 import sun from "../assets/img/002-sun.svg";
 const Header = (props) => {
   return (
-    <Wrapper className="Header">
+    <Wrapper className={props.isDarkMode ? 'header-dark-mode' : ''}>
       <Title>devfinder</Title>
       <MoudContainer>
         
-        <MoudSpan>DARK</MoudSpan>
+        <MoudSpan>{props.isDarkMode ? "LIGHT" : "DARK"}</MoudSpan>
         <Button onClick={props.toggleDarkMode}>
-          <Img src={props.darkMode ? sun : moon} alt="moon icon" />
+          <Img src={props.isDarkMode ? sun : moon} alt="icon" />
         </Button>
       </MoudContainer>
     </Wrapper>
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 const Title = styled.h1`
-  color: #222731;
+  /* color: #222731; */
   font-size: 26px;
   font-weight: 700;
 `;
@@ -39,7 +39,7 @@ const MoudContainer = styled.div`
   align-items: center;
 `;
 const MoudSpan = styled.span`
-  color: #697c9a;
+  /* color: #697c9a; */
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 2.5px;

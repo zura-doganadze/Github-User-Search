@@ -3,8 +3,9 @@
 body {
   text-align: center;
   font-family: "Space Mono", monospace;
-  background: #f6f8ff;
- }
+  background-color: #fff;
+  color: #000;
+}
 #root {
   width: 100%;
   min-height: 100vh;
@@ -14,4 +15,23 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.dark-mode {
+  background-color: #141d2f;
+  color: #fff;
+}
+.header-dark-mode {
+  color: #fff;
+}
+.search-dark-mode {
+  background-color: #1e2a47;
+  color: #fff;
+}
+.main-dark-mode {
+  background-color: #1e2a47;
+  color: #fff;
+}
+.main-light-mode {
+  /* background-color: #1e2a47; */
+  color: #4b6a9b;
 }

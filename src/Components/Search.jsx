@@ -4,7 +4,7 @@ import search from "../assets/img/search icon.svg";
 
 function Search(props) {
   return (
-    <Wrapper>
+    <Wrapper className={props.isDarkMode ? 'search-dark-mode' : ''}>
       <SearchContainer>
         <Img src={search} alt="search icon" />
         <Input
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 9px 10px 9px 32px;
   border-radius: 15px;
-  background: #fefefe;
+  /* background: #fefefe; */
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
   margin: 35px 0 23px 0;
 `;
@@ -40,7 +40,7 @@ const Img = styled.img`
   cursor: pointer;
 `;
 const Input = styled.input`
-  color: #4b6a9b;
+  /* color: #4b6a9b; */
   font-size: 18px;
   margin: 0 23px;
   border: none;
@@ -49,6 +49,7 @@ const Input = styled.input`
   outline: none;
   line-height: 25px; /* 138.889% */
   letter-spacing: 2.5px;
+  background-color: inherit;
 `;
 const Button = styled.button`
   color: #fff;
